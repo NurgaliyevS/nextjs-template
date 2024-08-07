@@ -3,15 +3,13 @@ import { SessionProvider } from "next-auth/react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import PlausibleProvider from "next-plausible";
-import { customConfig } from "@/project.custom.config";
 
 export default function App({
   Component,
   pageProps: { session, ...pageProps },
 }) {
   return (
-    // example as uptimefriend.com without https://
-    <PlausibleProvider domain={customConfig.domainName}>
+    <PlausibleProvider domain="uptimefriend.com">
     <SessionProvider session={session}>
       <Component {...pageProps} />
       <ToastContainer

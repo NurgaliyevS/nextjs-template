@@ -11,13 +11,11 @@ export default function Document() {
       <Head>
         <meta
           name="keywords"
-          // website monitoring, web monitoring, site downtime, website monitoring tools, website uptime monitoring, website monitoring services, site monitoring, server uptime, uptime web hosting, uptime robot alternative
-          content={customConfig.seo.keywords}
+          content="website monitoring, web monitoring, site downtime, website monitoring tools, website uptime monitoring, website monitoring services, site monitoring, server uptime, uptime web hosting, uptime robot alternative"
         />
         <meta
           name="description"
-          // Start monitoring in 30 seconds. Get notified by email, and SMS. Monitor your website, and server.
-          content={customConfig.seo.description}
+          content="Start monitoring in 30 seconds. Get notified by email, and SMS. Monitor your website, and server."
         />
         <meta charSet="UTF-8" />
         <meta name="robots" content="index, follow" />
@@ -25,64 +23,53 @@ export default function Document() {
         <meta name="theme-color" content="#fafafa" />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
-        {/* example as UptimeFriend without .com */}
-        <meta name="apple-mobile-web-app-title" content={customConfig.seo.applicationName} />
-        {/* example as UptimeFriend without .com */}
-        <meta name="application-name" content={customConfig.seo.applicationName} />
+        <meta name="apple-mobile-web-app-title" content="UptimeFriend" />
+        <meta name="application-name" content="UptimeFriend" />
         <meta
           property="og:title"
-          // example as UptimeFriend - Monitor your website, and server
-          content={customConfig.seo.og.title}
+          content="UptimeFriend - Monitor your website, and server"
         />
         <meta
           property="og:description"
-          // example as UptimeFriend - Monitor your website, and server
-          content={customConfig.seo.description}
+          content="Start monitoring in 30 seconds. Get notified by email, and SMS. Monitor your website, and server."
         />
-        {/* example as https://uptimefriend.com/ */}
-        <meta property="og:url" content={customConfig.domainWithHttps} />
+        <meta property="og:url" content="https://uptimefriend.com/" />
         <meta property="og:type" content="website" />
-        {/* example as UptimeFriend */}
-        <meta property="og:site_name" content={customConfig.seo.applicationName} />
+        <meta property="og:site_name" content="UptimeFriend" />
         <meta property="og:locale" content="en_US" />
         <meta
           property="og:image"
-          // add to public og image and it will be as https://uptimefriend.com/og-image.png
-          content={customConfig.seo.og.image}
+          content="https://uptimefriend.com/og-image.png"
         />
         <meta
           property="og:image:alt"
-          content={customConfig.seo.og.imageAlt}
+          content="UptimeFriend - Monitor your website, and server"
         />
         <meta property="og:image:type" content="image/png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta
           property="article:author"
-          // example as https://x.com/tech_nurgaliyev
-          content={customConfig.seo.og.articleAuthor}
+          content="https://x.com/tech_nurgaliyev"
         />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@tech_nurgaliyev" />
         <meta name="twitter:creator" content="@tech_nurgaliyev" />
         <meta
           name="twitter:title"
-          // UptimeFriend - Monitor your website, and server
-          content={customConfig.seo.og.title}
+          content="UptimeFriend - Monitor your website, and server"
         />
         <meta
           name="twitter:description"
-          // example as Start monitoring in 30 seconds. Get notified by email, and SMS. Monitor your website, and server.
-          content={customConfig.seo.description}
+          content="Start monitoring in 30 seconds. Get notified by email, and SMS. Monitor your website, and server."
         />
-        {/* example as https://uptimefriend.com/twitter.png */}
         <meta
           name="twitter:image"
-          content={customConfig.seo.og.twitterImage}
+          content="https://uptimefriend.com/twitter.png"
         />
-        {/* example as https://uptimefriend.com/ */}
-        <link rel="canonical" href={customConfig.domainWithHttps} />
-        {/* <link
+
+        <link rel="canonical" href="https://uptimefriend.com/" />
+        <link
           rel="icon"
           type="image/png"
           sizes="32x32"
@@ -117,7 +104,7 @@ export default function Document() {
           rel="apple-touch-icon"
           sizes="60x60"
           href="/apple-icon-60x60.png"
-        /> */}
+        />
       </Head>
       <body>
         <Main />

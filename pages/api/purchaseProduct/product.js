@@ -1,4 +1,4 @@
-import { lemonSqueezyApiInstance } from "@/utils/lemonAxios";
+import { lemonSqueezyApiInstance } from "@/utils/axios";
 import { isDevelopment } from "@/utils/isDevelopment";
 
 export default async function handler(req, res) {
