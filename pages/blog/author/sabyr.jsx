@@ -14,10 +14,10 @@ function Sabyr({ posts }) {
           name="description"
           content={"Sabyr Nurgaliyev, Author at UptimeFriend's Blog"}
         />
-        <meta name="keywords" content={"UptimeFriend.com"} />
+        <meta name="keywords" content={"nurgaliyevs.com"} />
         <link
           rel="canonical"
-          href={`https://uptimefriend.com/blog/author/sabyr`}
+          href={`https://nurgaliyevs.com/blog/author/sabyr`}
         />
         <meta
           property="og:title"
@@ -31,7 +31,7 @@ function Sabyr({ posts }) {
         />
         <meta
           property="og:url"
-          content={`https://uptimefriend.com/blog/author/sabyr`}
+          content={`https://nurgaliyevs.com/blog/author/sabyr`}
         />
         <meta property="og:type" content="website" />
       </Head>

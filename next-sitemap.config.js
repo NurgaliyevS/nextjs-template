@@ -3,7 +3,7 @@ const fs = require('fs');
 
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: "https://uptimefriend.com",
+  siteUrl: "https://nurgaliyevs.com",
   generateRobotsTxt: true,
   exclude: ["/admin", "/admin/*", "/blocked"],
   additionalPaths: async (config) => {

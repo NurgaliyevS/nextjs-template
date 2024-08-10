@@ -5,13 +5,13 @@ export const customConfig = {
     theme: "acid",
     main: themes[`[data-theme=acid]`],
   },
-  // example as uptimefriend.com without https://
-  domainName: "uptimefriend.com",
+  // example as nurgaliyevs.com without https://
+  domainName: "nurgaliyevs.com",
   mailgun: {
     subdomain: "mg",
-    fromNoReply: `UptimeFriend <noreply@mg.uptimefriend.com>`,
-    fromAdmin: `UptimeFriend <nurgasab@mg.uptimefriend.com>`,
-    supportEmail: "nurgasab@uptimefriend.com",
+    fromNoReply: `UptimeFriend <noreply@mg.nurgaliyevs.com>`,
+    fromAdmin: `UptimeFriend <nurgasab@mg.nurgaliyevs.com>`,
+    supportEmail: "nurgasab@nurgaliyevs.com",
     forwardRepliesTo: "nurgasab@gmail.com",
   },
   domainWithHttps: "",

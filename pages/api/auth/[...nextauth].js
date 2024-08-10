@@ -25,7 +25,7 @@ export const authOptions = {
       ? [
           EmailProvider({
             server: process.env.EMAIL_SERVER,
-            from: "noreply@mg.uptimefriend.com",
+            from: "noreply@mg.nurgaliyevs.com",
           }),
         ]
       : []),
@@ -44,7 +44,7 @@ export const authOptions = {
     strategy: "jwt",
   },
   theme: {
-    logo: `https://uptimefriend.com/logoAndName200x50.png`,
+    logo: `https://nurgaliyevs.com/logoAndName200x50.png`,
   },
 };
 

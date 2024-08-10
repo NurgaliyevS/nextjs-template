@@ -21,7 +21,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Monitor your website, and server | UptimeFriend.com</title>
+        <title>Monitor your website, and server | nurgaliyevs.com</title>
       </Head>
       <header className={lato.className}>
         <Header />
