@@ -1,12 +1,13 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePlausible } from "next-plausible";
+import { isDevelopment } from "@/utils/isDevelopment";
 
 function Footer({ bgColor }) {
   const plausible = usePlausible();
   return (
     <div
-      className={`${bgColor ? bgColor : "bg-slate-800"} ${
+      className={`${bgColor ? bgColor : "bg-neutral"} ${
         bgColor ? "text-base-content" : "text-gray-300"
       } overflow-hidden border-t ${
         bgColor ? "border-base-content/5" : "border-base-content/50"
@@ -21,14 +22,14 @@ function Footer({ bgColor }) {
               title="Uptime Friend - home page"
             >
               <Image
-                src={"/logo.webp"}
+                src={"/company_related/logo.webp"}
                 alt="Uptime Friend logo"
                 className="w-5 h-5"
                 priority={true}
                 width={24}
                 height={24}
               />
-              <span className="font-extrabold text-lg">UptimeFriend</span>
+              <span className="font-extrabold text-lg">PregnantMeal</span>
             </Link>
 
             <p className="mt-3 text-sm leading-relaxed">
@@ -125,7 +126,9 @@ function Footer({ bgColor }) {
                 </Link>
                 <Link
                   className="link link-hover"
-                  href="/blog"
+                  href={
+                    isDevelopment() ? "/blog" : "https://pregnantmeal.com/blog"
+                  }
                   title="Uptime Friend - blog"
                 >
                   Blog
@@ -139,9 +142,20 @@ function Footer({ bgColor }) {
               <div className="flex flex-col justify-center items-center md:items-start gap-2 mb-10 text-sm">
                 <Link
                   className="link link-hover"
-                  href="https://tripplanss.com/"
+                  href="http://uptimefriend.com/"
                   target="_blank"
                   title="Uptime Friend - home page"
+                  onClick={() => {
+                    plausible("UptimeFriend");
+                  }}
+                >
+                  UptimeFriend
+                </Link>
+                <Link
+                  className="link link-hover"
+                  href="https://tripplanss.com/"
+                  target="_blank"
+                  title="Trip Planss - home page"
                   onClick={() => {
                     plausible("TRIPPLANSS");
                   }}
@@ -152,7 +166,7 @@ function Footer({ bgColor }) {
                   className="link link-hover"
                   href="http://weeealth.com/"
                   target="_blank"
-                  title="Uptime Friend - home page"
+                  title="Weeealth - home page"
                   onClick={() => {
                     plausible("WEEEALTH");
                   }}

@@ -8,7 +8,7 @@ import { handleSignIn } from "./handleSignIn";
 import { useSession } from "next-auth/react";
 import { usePlausible } from "next-plausible";
 
-const links = [
+const defaultLinks = [
   {
     href: "/#pricing",
     label: "Pricing",
@@ -23,16 +23,18 @@ const links = [
   },
   {
     href: "/#reviews",
-    label: "Reviews"
-  }
+    label: "Reviews",
+  },
 ];
 
-const Header = () => {
+const Header = ({ linksOutside, buttonCore }) => {
   const plausible = usePlausible();
   const searchParams = useSearchParams();
   const [isOpen, setIsOpen] = useState(false);
 
   const { data: session } = useSession();
+
+  const links = linksOutside || defaultLinks;
 
   // setIsOpen(false) when the route changes (i.e: when the user clicks on a link on mobile)
   useEffect(() => {
@@ -53,40 +55,53 @@ const Header = () => {
             title="Uptime Friend - home page"
           >
             <Image
-              src={"/logo.webp"}
+              src={"/company_related/logo.webp"}
               alt="Uptime Friend logo"
               className="w-5 h-5"
               priority={true}
               width={24}
               height={24}
             />
-            <span className="font-extrabold text-lg">UptimeFriend</span>
+            <span className="font-extrabold text-lg">PregnantMeal</span>
           </Link>
         </div>
         {/* Burger button to open menu on mobile */}
-        <div className="flex lg:hidden">
-          <button
-            type="button"
-            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5"
-            onClick={() => setIsOpen(true)}
-          >
-            <span className="sr-only">Open main menu</span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="w-6 h-6 text-base-content"
+        {buttonCore ? (
+          <div className="flex lg:hidden">
+            <Link
+              href={buttonCore.href}
+              className="btn btn-md"
+              title="Create new meal"
+              rel="nofollow"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-              />
-            </svg>
-          </button>
-        </div>
+              {buttonCore.label}
+            </Link>
+          </div>
+        ) : (
+          <div className="flex lg:hidden">
+            <button
+              type="button"
+              className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5"
+              onClick={() => setIsOpen(true)}
+            >
+              <span className="sr-only">Open main menu</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-6 h-6 text-base-content"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                />
+              </svg>
+            </button>
+          </div>
+        )}
 
         {/* Your links on large screens */}
         <div className="hidden lg:flex lg:justify-center lg:gap-12 lg:items-center">
@@ -113,23 +128,34 @@ const Header = () => {
         {/* CTA on large screens */}
         {!session?.user ? (
           <div className="hidden lg:flex lg:justify-end lg:flex-1">
-            <button className="btn btn-sm" onClick={handleSignIn}>
+            <button className="btn btn-neutral btn-sm" onClick={handleSignIn}>
               Login
             </button>
           </div>
         ) : (
           <div className="hidden lg:flex lg:justify-end lg:flex-1">
-            <Link
-              href="/admin"
-              className="btn btn-sm"
-              title="Admin page"
-              rel="nofollow"
-              onClick={() => {
-                plausible("ADMIN_PAGE");
-              }}
-            >
-              {session?.user?.email}
-            </Link>
+            {buttonCore ? (
+              <Link
+                href={buttonCore.href}
+                className="btn btn-md btn-neutral"
+                title="Create new meal"
+                rel="nofollow"
+              >
+                {buttonCore.label}
+              </Link>
+            ) : (
+              <Link
+                href="/meal"
+                className="btn btn-sm btn-neutral"
+                title="Admin page"
+                rel="nofollow"
+                onClick={() => {
+                  plausible("ADMIN_PAGE");
+                }}
+              >
+                {session?.user?.email}
+              </Link>
+            )}
           </div>
         )}
       </nav>
@@ -147,14 +173,14 @@ const Header = () => {
               href="/"
             >
               <Image
-                src={"/logo.webp"}
+                src={"/company_related/logo.webp"}
                 alt="Uptime Friend logo"
                 className="w-5 h-5"
                 priority={true}
                 width={24}
                 height={24}
               />
-              <span className="font-extrabold text-lg">UptimeFriend</span>
+              <span className="font-extrabold text-lg">PregnantMeal</span>
             </Link>
             <button
               type="button"
@@ -209,7 +235,7 @@ const Header = () => {
             ) : (
               <div className="flex flex-col">
                 <Link
-                  href="/admin"
+                  href="/meal"
                   className="btn btn-sm w-full btn-neutral"
                   title="Admin page"
                   rel="nofollow"

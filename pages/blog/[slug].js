@@ -14,14 +14,6 @@ import rehypeRaw from "rehype-raw";
 import rehypeReact from "rehype-react";
 import React from "react";
 import Footer from "@/components/Footer";
-import remarkGfm from 'remark-gfm';
-
-const generateId = (text) => {
-  return text
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/(^-|-$)+/g, '');
-};
 
 const renderAst = (content) =>
   unified()
@@ -33,7 +25,6 @@ const renderAst = (content) =>
         h2: (props) => (
           <section className="article">
             <h2
-              id={generateId(props.children[0])}
               className="text-2xl lg:text-4xl font-extrabold tracking-tight mb-4 text-base-content"
               {...props}
             />
@@ -42,7 +33,6 @@ const renderAst = (content) =>
         h3: (props) => (
           <section className="article">
             <h3
-              id={generateId(props.children[0])}
               className="text-xl lg:text-2xl font-bold tracking-tight mb-2 text-base-content"
               {...props}
             />
@@ -86,18 +76,14 @@ const renderAst = (content) =>
         },
         table: (props) => (
           <div className="overflow-x-auto my-4 text-base-content border rounded-xl">
-            <table className="table w-full" {...props} />
+            <table className="table" {...props} />
           </div>
         ),
-        thead: (props) => <thead {...props} />,
-        tbody: (props) => <tbody {...props} />,
-        tr: (props) => <tr className="border-b" {...props} />,
-        th: (props) => <th className="bg-base-200 px-4 py-2 text-left font-bold" {...props} />,
-        td: (props) => <td className="px-4 py-2" {...props} />,
+        th: (props) => <th className="bg-base-200" {...props} />,
         a: (props) => (
           <a
             className="link link-info"
-            // target="_blank"
+            target="_blank"
             rel="nofollow"
             {...props}
           />
@@ -110,34 +96,34 @@ export default function BlogPost({ post }) {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    headline: post.title,
-    datePublished: post.date,
-    dateModified: post.date,
-    author: {
+    "headline": post.title,
+    "datePublished": post.date,
+    "dateModified": post.date,
+    "author": {
       "@type": "Person",
-      name: post.author,
+      "name": post.author,
     },
-    description: post.excerpt,
+    "description": post.excerpt,
   };
 
   return (
     <div className="mx-auto">
       <Head>
-        <title>{post.title} | UptimeFriend Blog</title>
+        <title>{`${post.title} | PregnantMeal Blog`}</title>
         <meta name="description" content={post.excerpt} />
         <meta name="keywords" content={post.tags.join(", ")} />
         <link
           rel="canonical"
-          href={`https://nurgaliyevs.com/blog/${post.slug}`}
+          href={`https://pregnantmeal.com/blog/${post.slug}`}
         />
         <meta
           property="og:title"
-          content={`${post.title} | UptimeFriend Blog`}
+          content={`${post.title} | PregnantMeal Blog`}
         />
         <meta property="og:description" content={post.excerpt} />
         <meta
           property="og:url"
-          content={`https://nurgaliyevs.com/blog/${post.slug}`}
+          content={`https://pregnantmeal.com/blog/${post.slug}`}
         />
         <meta property="og:type" content="article" />
         <meta property="article:published_time" content={post.date} />
@@ -175,7 +161,7 @@ export default function BlogPost({ post }) {
               {post.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="badge badge-sm md:badge-md hover:badge-secondary"
+                  className="badge badge-sm md:badge-md hover:badge-primary"
                 >
                   {tag}
                 </span>
@@ -252,10 +238,7 @@ export async function getStaticProps({ params }) {
   const fileContents = fs.readFileSync(filePath, "utf8");
 
   const { data, content } = matter(fileContents);
-  const processedContent = await remark()
-    .use(html)
-    .use(remarkGfm)
-    .process(content);
+  const processedContent = await remark().use(html).process(content);
   const contentHtml = processedContent.toString();
 
   return {

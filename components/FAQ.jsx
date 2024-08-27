@@ -4,86 +4,83 @@ import { useRef, useState } from "react";
 import Link from "next/link";
 import { handleSignIn } from "./handleSignIn";
 import { usePlausible } from "next-plausible";
+import CTAButton from "./CTAButton";
 
 const faqList = [
   {
-    question: "What is website monitoring and why do I need it?",
+    question: "What foods should I avoid during pregnancy?",
+    answer: (
+      <p>Don't eat raw fish, unpasteurized cheese, or undercooked meat.</p>
+    ),
+  },
+  {
+    question: "What's the best drink for energy during pregnancy?",
     answer: (
       <p>
-        Website monitoring involves tracking your site's performance and uptime.
-        It helps you identify and resolve issues faster, reduces downtime, and
-        provides a better user experience. Our service, UptimeFriend, offers
-        comprehensive web monitoring tools to keep your site running smoothly.
+        Water is best. Some caffeine-free teas are okay. Ask your doctor about
+        energy drinks.
       </p>
     ),
   },
   {
-    question: "How does UptimeFriend notify me of site downtime?",
+    question: "What is gestational diabetes?",
+    answer: <p>It's when your blood sugar gets too high during pregnancy.</p>,
+  },
+  {
+    question: "How can I count calories during pregnancy?",
+    answer: <p>Use a food tracking app or write down what you eat.</p>,
+  },
+  {
+    question: "What are food aversions in pregnancy?",
     answer: (
       <p>
-        UptimeFriend instantly notifies you via email and SMS whenever your site
-        experiences downtime. This will allow you to address issues quickly and
-        minimize the impact on your business.
+        It's normal to dislike foods you usually enjoy. Try eating small,
+        frequent meals.
       </p>
     ),
   },
   {
-    question: "What types of monitoring does UptimeFriend offer?",
+    question: "How many extra calories do I need when pregnant?",
     answer: (
       <p>
-        UptimeFriend offers HTTP web monitoring and ping monitoring. These tools
-        help you monitor the availability of your website and the status of
-        network devices, ensuring that your website stays online and works.
+        It depends on your size and activity, but usually 300-500 extra calories
+        per day.
       </p>
     ),
   },
   {
-    question: "Can team members get notifications too?",
+    question: "What should a 7-day meal plan for a pregnant woman include?",
     answer: (
       <p>
-        You can add their email addresses and phone numbers. They will receive
-        the same notifications as you do.
+        Include fruits, veggies, whole grains, lean proteins, and healthy fats
+        each day.
       </p>
     ),
   },
   {
-    question: "How often does UptimeFriend check my website’s uptime?",
+    question: "What are good dinner ideas for the first trimester?",
     answer: (
       <p>
-        The monitoring interval depends on your subscription settings. The Free
-        plan checks every 5 minutes, the Personal plan every 3 minutes, the Team
-        plan every 1 minute, and the Enterprise plan every 30 minutes.
+        Light, easy-to-digest foods like crackers, fruits, and soups often work
+        well.
       </p>
     ),
   },
   {
-    question:
-      "What is the difference between HTTP monitoring and ping monitoring?",
+    question: "What's a healthy meal plan during pregnancy?",
     answer: (
       <p>
-        HTTP monitoring checks the availability of your website through HTTP
-        requests to your site, while ping monitoring checks the availability of
-        your network devices by sending ICMP echo requests (pings). Both types
-        of monitoring help keep your website and network online.
+        Focus on balanced meals with variety. Include all food groups and take
+        prenatal vitamins.
       </p>
     ),
   },
   {
-    question: "Are there discounts for new users?",
+    question: "What's an example of a one-day meal plan for a pregnant woman?",
     answer: (
       <p>
-        Yes, we are currently offering a LAUNCH discount of 50% off. This is a
-        great opportunity to test our services at a discounted price.
-      </p>
-    ),
-  },
-  {
-    question: "How does UptimeFriend help in server uptime web hosting?",
-    answer: (
-      <p>
-        UptimeFriend constantly monitors your server and web hosting uptime,
-        promptly issuing alerts if it detects any issues. This approach helps
-        maintain high uptime and reliability for your website.
+        Breakfast: oatmeal with fruit. Lunch: salad with chicken. Dinner: fish
+        with veggies. Snacks: yogurt and nuts
       </p>
     ),
   },
@@ -103,7 +100,7 @@ const FaqItem = ({ item }) => {
         }}
         aria-expanded={isOpen}
       >
-        <span className={`flex-1 ${isOpen ? "text-secondary" : ""}`}>
+        <span className={`flex-1 ${isOpen ? "text-primary" : ""}`}>
           {item?.question}
         </span>
         <svg
@@ -151,7 +148,7 @@ function FAQ() {
   const plausible = usePlausible();
   return (
     <section
-      className="bg-slate-800 text-gray-300 py-44 overflow-hidden"
+      className="bg-neutral text-gray-300 py-44 overflow-hidden"
       id="faq"
     >
       <div className="px-8 container max-w-7xl mx-auto flex flex-col md:flex-row gap-12">
@@ -169,14 +166,7 @@ function FAQ() {
       </div>
 
       <div className="flex items-center justify-center mt-20">
-        <Link href="#" className="btn btn-secondary btn-wide no-underline" 
-        onClick={(e) => {
-          handleSignIn(e);
-          plausible("GET_STARTED_FAQ");
-        }}
-        >
-          Get Started
-        </Link>
+        <CTAButton plausibleNameBeforeLogin="GET_STARTED_FAQ" plausibleNameAfterLogin="GET_STARTED_FAQ_AFTER_LOGIN" />
       </div>
     </section>
   );

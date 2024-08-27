@@ -8,6 +8,9 @@ import { format } from "date-fns";
 import BlogHeader from "./BlogHeader";
 import Image from "next/image";
 import Footer from "@/components/Footer";
+import { isDevelopment } from "@/utils/isDevelopment";
+import { customConfig } from "@/project.custom.config";
+
 
 export default function BlogIndex({ posts }) {
   const [searchTerm, setSearchTerm] = useState("");
@@ -24,26 +27,25 @@ export default function BlogIndex({ posts }) {
   return (
     <div className="mx-auto">
       <Head>
-        <title>UptimeFriend Blog</title>
+        <title>PregnantMeal Blog</title>
         <meta
           name="description"
-          content="Latest posts from UptimeFriend on website monitoring and uptime"
+          content={customConfig.seo.description}
         />
         <meta
           name="keywords"
-          content="website monitoring, uptime, server monitoring, tech blog"
+          content={customConfig.seo.keywords}
         />
-        <link rel="canonical" href="https://nurgaliyevs.com/blog" />
+        <link rel="canonical" href={`https://pregnantmeal.com/blog`} />
       </Head>
       <BlogHeader />
       <main className="min-h-screen max-w-6xl mx-auto p-8">
         <section className="text-center max-w-xl mx-auto mt-12 mb-24 md:mb-32">
           <h1 className="font-extrabold text-3xl lg:text-5xl tracking-tight mb-6">
-            UptimeFriend Blog
+            {customConfig.blog.title}
           </h1>
           <p className="text-lg opacity-80 leading-relaxed pb-5">
-            Learn how to check if website is down, how to check server uptime,
-            save money on monitoring, and handle uptime monitoring.
+            {customConfig.blog.description}
           </p>
           <input
             type="text"
@@ -71,7 +73,7 @@ export default function BlogIndex({ posts }) {
                 <div className="flex flex-wrap gap-2">
                   {post.tags.map((tag) => (
                     <span
-                      className="badge badge-sm md:badge-md hover:badge-secondary"
+                      className="badge badge-sm md:badge-md hover:badge-primary"
                       key={tag}
                     >
                       {tag}
@@ -80,14 +82,18 @@ export default function BlogIndex({ posts }) {
                 </div>
                 <h2 className="mb-1 text-xl md:text-2xl font-bold">
                   <Link
-                    href={`/blog/${post.slug}`}
-                    className="link link-hover hover:link-secondary"
+                    href={`${
+                      isDevelopment()
+                        ? `/blog/${post.slug}`
+                        : `https://pregnantmeal.com/blog/${post.slug}`
+                    }`}
+                    className="link link-hover hover:link-primary"
                     title={post.title}
                   >
                     {post.title}
                   </Link>
                 </h2>
-                
+
                 <div className="text-base-content/80 space-y-4">
                   <p>{post.excerpt}</p>
                   <div className="flex items-center gap-4 text-sm">

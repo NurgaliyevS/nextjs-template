@@ -6,25 +6,28 @@ import Link from "next/link";
 import Head from "next/head";
 
 const Blocked = () => {
-  const handleLogin = () => {
-    signIn(undefined, { callbackUrl: "/" });
-  };
-
   return (
     <>
       <Head>
-        <title>Access Blocked</title>
         <meta name="robots" content="noindex, nofollow" />
       </Head>
-      <main className="flex flex-col items-center justify-center h-screen w-full p-10 bg-neutral text-neutral-content">
-        <h1 className="text-xl md:text-2xl font-medium mb-4">Hm, Access Blocked</h1>
-        <p className="mb-8">Try again in 1 minute</p>
+      <main className="relative bg-neutral text-neutral-content h-screen w-full flex flex-col justify-center gap-8 items-center p-10">
+        <h1 className="text-xl md:text-2xl font-medium">Hm, Access Blocked</h1>
+        <p>Try again in 1 minute</p>
 
-        <div className="flex gap-4">
-          <button onClick={handleLogin} className="btn btn-primary">
+        <div>
+          <button
+            onClick={() =>
+              signIn(undefined, {
+                callbackUrl: "/meal",
+              })
+            }
+            className="link"
+          >
             Login
-          </button>
-          <Link href="/" className="btn btn-secondary">
+          </button>{" "}
+          or{" "}
+          <Link className="link" href="/">
             Home
           </Link>
         </div>
