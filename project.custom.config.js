@@ -7,6 +7,7 @@ export const customConfig = {
   },
   // example as pregnantmeal.com without https://
   domainName: "pregnantmeal.com",
+  // 
   mailgun: {
     subdomain: "mg",
     fromNoReply: `PregnantMeal <noreply@mg.pregnantmeal.com>`,
