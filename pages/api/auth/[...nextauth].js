@@ -3,6 +3,7 @@ import GoogleProvider from "next-auth/providers/google";
 import EmailProvider from "next-auth/providers/email";
 import clientPromise from "@/backend/mongodbClient";
 import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
+import { customConfig } from "@/project.custom.config";
 
 export const authOptions = {
   secret: process.env.NEXTAUTH_SECRET,
@@ -25,7 +26,7 @@ export const authOptions = {
       ? [
           EmailProvider({
             server: process.env.EMAIL_SERVER,
-            from: "noreply@mg.pregnantmeal.com",
+            from: customConfig.mailgun.noreply,
           }),
         ]
       : []),
@@ -50,7 +51,7 @@ export const authOptions = {
     strategy: "jwt",
   },
   theme: {
-    logo: `https://pregnantmeal.com/logoAndName200x50.png`,
+    logo: `https://pregnantmeal.com/logoAndName.jpeg`,
   },
   debug: true, // Enable debug mode for more detailed logs
 };

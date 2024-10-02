@@ -13,6 +13,7 @@ export const customConfig = {
     fromAdmin: `PregnantMeal <admin@mg.pregnantmeal.com>`,
     supportEmail: "support@pregnantmeal.com",
     forwardRepliesTo: "nurgasab@gmail.com",
+    noreply: "noreply@mg.pregnantmeal.com"
   },
   documentTitle: "Yummy Meals, Strong Baby - PregnantMeal",
   domainWithHttps: "https://pregnantmeal.com",
